@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "uw3HK4BrgoTbHl1GnRZaxNPcoZPrX6aVR5lL6rbaB5b1nP5/CGyfGPZIPETpLjfPNLd8DDl6+aK2zzNxjVaTrA==",
+  "dgSpecHash": "61HDVa35SAhJK3AnX0184dx0ixisq4Z5Azt/6zUikdFRmK6/GirewqqcNRo3j2d00/OSgousJasE+mKXXWXRXw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Usman\\source\\repos\\WebAPI\\WebAPI\\WebApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Usman\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\Usman\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.6\\microsoft.aspnetcore.jsonpatch.3.1.6.nupkg.sha512",
     "C:\\Users\\Usman\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.6\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.6.nupkg.sha512",
     "C:\\Users\\Usman\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

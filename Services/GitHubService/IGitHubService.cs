@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebAPI.Models;
+using WebApi.Models;
+
 
 namespace WebAPI.Services.GitHubService
 {
     public interface IGitHubService
     {
-        Task<PersonModel> GetReprositories(string User);
+        Task<List<GitRepositoryModel>> GetReprositories();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,12 @@ using System.Net.Mime;
 using System.Security.Permissions;
 using System.Text.Json;
 using System.Threading.Tasks;
-using WebAPI.Models;
+using WebApi.Models;
 using WebAPI.Services.GitHubService;
 
 namespace WebAPI.Controllers
 {
-    [Route("{version}/github")]
+    [Route("GitHubApi")]
     public class GitHubController : Controller
     {
         private readonly IGitHubService GitHubService;
@@ -23,15 +24,15 @@ namespace WebAPI.Controllers
             GitHubService = _GitHubService;
         }
 
-        [HttpGet()]
+        [HttpGet("/Bashiruu1")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [Produces(MediaTypeNames.Application.Json)]
-        public async Task<ActionResult<PersonModel>> GetCommits([FromQuery] string User)
-        {            
-            string something = string.Empty;
-            PersonModel Person = await GitHubService.GetReprositories(User);
+        public async Task<ActionResult<List<GitRepositoryModel>>> GetRepositories()
+        {
 
-            return Person;
+            List<GitRepositoryModel> GitRepos = await GitHubService.GetReprositories();
+            return GitRepos;
         }
+
     }
 }
