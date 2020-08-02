@@ -15,7 +15,6 @@ using WebAPI.Services.GitHubService;
 
 namespace WebAPI.Controllers
 {
-    [ApiController]
     [Route("api/GitHubApi")]
     public class GitHubController : Controller
     {
@@ -42,14 +41,6 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<List<GitRepositoryModel>>> GetPersonModel([FromBody] GitRepositoryModel GitRepo)
         {
             List<GitRepositoryModel> GitRepos = await GitHubService.GetReprositories();
-            if (!Request.Headers.ContainsKey("Content-Type")) {
-                return StatusCode(StatusCodes.Status415UnsupportedMediaType, new GitRepositoryModel { 
-                    Name = "415",
-                    Description = "Content-Type Not Supported Bro",
-                    Html_Url = "Please change it bro"
-                });
-            }
-            var what = Newtonsoft.Json.JsonConvert.SerializeObject(GitRepos);
             return GitRepos;
         }
     }

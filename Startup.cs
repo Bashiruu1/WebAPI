@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using WebApi.Middleware;
 using WebApi.Models;
 using WebAPI.Services.GitHubService;
 
@@ -64,39 +65,7 @@ namespace WebAPI
             }
             app.UseHsts();
             app.UseHttpsRedirection();
-            ErrorWrapper Wrapper = new ErrorWrapper();
-            ErrorResponse errorResponse = new ErrorResponse();
-            Error error = new Error();
-
-
-            var what = Wrapper.ToString();
-            app.UseStatusCodePages(context => 
-            {
-
-                context.Run(async stuff => 
-                {
-                    stuff.Response.ContentType = MediaTypeNames.Application.Json;
-                    switch (stuff.Response.StatusCode)
-                    {
-                        case StatusCodes.Status415UnsupportedMediaType:
-                            error = new Error("415", "What it do");
-                            errorResponse.errors.Add(error);
-                            Wrapper.response = errorResponse;
-                            await stuff.Response.WriteAsync(JsonConvert.SerializeObject(Wrapper));
-                            Wrapper.response.errors.Clear();
-                            break;
-                        case StatusCodes.Status401Unauthorized:
-                            error = new Error("401", "What it do");
-                            errorResponse.errors.Add(error);
-                            Wrapper.response = errorResponse;
-                            await stuff.Response.WriteAsync(JsonConvert.SerializeObject(Wrapper));
-                            Wrapper.response.errors.Clear();
-                            break;
-                    }
-                    
-                    
-                });
-            });
+            app.UseCustomAutomaticStatusCodesMiddleware();
             app.UseRouting();
 
             app.UseAuthorization();
