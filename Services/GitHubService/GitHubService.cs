@@ -20,10 +20,6 @@ namespace WebAPI.Services.GitHubService
     {
         IConfiguration Configuration;
 
-        public GitHubService()
-        {
-        }
-
         public GitHubService(IConfiguration configuration)
         {
             Configuration = configuration;
